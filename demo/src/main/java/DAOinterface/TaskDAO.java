@@ -17,7 +17,7 @@ public interface TaskDAO {
     public void deletetask(int taskid);
     
     //search task by client on arraylist
-    public void searchtask();
+    public void searchtask(int taskid);
 
     //assign task by client to visitor 
     public void assigntask();

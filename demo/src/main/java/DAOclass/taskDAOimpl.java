@@ -61,14 +61,17 @@ public class taskDAOimpl implements TaskDAO {
 
     //search task by client on arraylist
     @Override
-    public void searchtask() {
+    public void searchtask(int taskid) {
         //throw new UnsupportedOperationException("Unimplemented method 'searchtask'");
+  
         if (ctasks.contains(c)){
             System.out.println("Found the task");
         } 
         else {
             System.out.println("There is no such task");
         }
+        
+
     }
 
     //assign task by client to visitor 
