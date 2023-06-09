@@ -4,70 +4,77 @@ import java.util.Scanner;
 
 import DAOinterface.UserDAO;
 
-import Model.User;
 import Model.Client;
 import Model.Vistor;
 
 public class UserDAOimpl implements UserDAO {
-    User u = new User(); 
-    String firstName,lastName,userName,password;  
+    // User u = new User();
+    Client c = new Client();
+    Vistor v = new Vistor();
+
+    String firstName, lastName, userName, password, choice;
+
+    Scanner scanner = new Scanner(System.in);
 
     @Override
     public void register() {
-        //throw new UnsupportedOperationException("Unimplemented method 'register'");
-        
-           try (Scanner scanner = new Scanner(System.in)) {
+
+        // throw new UnsupportedOperationException("Unimplemented method 'register'");
+        System.out.println("Are you a user(u) or client(c) ? ");
+        choice = scanner.nextLine();
+
+        if (choice.equals("v") || choice.equals("V")) {
             System.out.print("Enter firstName: ");
             firstName = scanner.nextLine();
-            //register.setFirstName(firstName);
-            u.setFirstname(firstName);
+            v.setFirstname(firstName);
 
             System.out.print("Enter lastName: ");
             lastName = scanner.nextLine();
-            //register.setLastName(lastName);
-            u.setLastname(lastName);
+            v.setLastname(lastName);
 
             System.out.print("Enter userName: ");
             userName = scanner.nextLine();
-            //register.setUserName(userName);
-            u.setUsername(userName);
+            v.setUsername(userName);
 
             System.out.print("Enter password: ");
             password = scanner.nextLine();
-            //register.setPassword(password);
-            u.setPassword(password);
+            v.setPassword(password);
+        } 
+        else if (choice.equals("c") || choice.equals("C")) {
+            System.out.print("Enter firstName: ");
+            firstName = scanner.nextLine();
+            c.setFirstname(firstName);
 
-        
+            System.out.print("Enter lastName: ");
+            lastName = scanner.nextLine();
+            c.setLastname(lastName);
+
+            System.out.print("Enter userName: ");
+            userName = scanner.nextLine();
+            c.setUsername(userName);
+
+            System.out.print("Enter password: ");
+            password = scanner.nextLine();
+            c.setPassword(password);
         }
     }
-    
 
     @Override
     public void login() {
-        //throw new UnsupportedOperationException("Unimplemented method 'login'");
-          try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print(" Enter user name: ");
-            userName = scanner.nextLine();
+        // throw new UnsupportedOperationException("Unimplemented method 'login'");
+        System.out.print(" Enter user name: ");
+        userName = scanner.nextLine();
 
-            System.out.print(" Enter password: ");
-            password = scanner.nextLine();
+        System.out.print(" Enter password: ");
+        password = scanner.nextLine();
 
-            /* 
-            if ("ramesh".equals(userName) && "password".equals(password)) {
-                System.out.println(" User successfully logged-in.. ");
-            } else {
-                System.out.println(" In valid userName of password ");
-            }  
-            */
-            if(userName.equals(u.getUsername()) && password.equals(u.getPassword())){
-                System.out.println("User successfully logged-in..");
-            }            
-            else{
-                System.out.println("Invalid try again");
-            }
-
+        if(userName.equals(c.getUsername()) && password.equals(c.getPassword())){
+            System.out.println("User successfully logged-in..");
+        }            
+        else{
+            System.out.println("Invalid try again");
         }
-    
+
     }
-    
+
 }
