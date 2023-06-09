@@ -1,27 +1,24 @@
 package DAOinterface;
 
-import Model.Client;
-import Model.Visitor;
-
 public interface TaskDAO {
     //CRUD functions
 
     //add new task by client
-    public void addtask(Client c);
+    public void addtask();
 
     //update new task by client 
-    public void updatetask(Client c);
+    public void updatetask();
 
     //delete task by client on arraylist
-    public void deletetask(Client c);
+    public void deletetask();
     
     //search task by client on arraylist
-    public void searchtask(Client c);
+    public void searchtask();
 
     //assign task by client to visitor 
-    public void assigntask(Client c, Visitor v);
+    public void assigntask();
 
     //display tasks assigned to visitor 
-    public void displaytaskVisitor(Visitor c);
+    public void displaytaskVisitor();
 
 }
