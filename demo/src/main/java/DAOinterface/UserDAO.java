@@ -1,11 +1,7 @@
 package DAOinterface;
 
+
 public interface UserDAO {
-    default void register() {
-     
-    }
-
-    default void login(){
-
-    }
+    public void register();
+    public void login();
 }
