@@ -5,12 +5,12 @@ import java.util.Scanner;
 import DAOinterface.UserDAO;
 
 import Model.Client;
-import Model.Vistor;
+import Model.Visitor;
 
 public class UserDAOimpl implements UserDAO {
     // User u = new User();
     Client c = new Client();
-    Vistor v = new Vistor();
+    Visitor v = new Visitor();
 
     String firstName, lastName, userName, password, choice;
 

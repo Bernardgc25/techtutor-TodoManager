@@ -1,31 +1,27 @@
 package DAOinterface;
 
-import java.util.List;
-import java.util.Scanner;
-
-import Model.User;
 import Model.Client;
-import Model.Vistor;
+import Model.Visitor;
 
 public interface TaskDAO {
     //CRUD functions
 
-    //add new task 
-    public void addtask(User u);
+    //add new task by client
+    public void addtask(Client c);
 
-    //update new tasks
-    public void updatetask(int taskid);
+    //update new task by client 
+    public void updatetask(Client c);
 
-    //display tasks 
-    public List<User> displaytask();
-
-    //delete task on arraylist
-    public void deletetask(User u);
+    //delete task by client on arraylist
+    public void deletetask(Client c);
     
-    //search task from arraylist
-    public void searchtask(User u);
+    //search task by client on arraylist
+    public void searchtask(Client c);
 
-    //assign task to visitor 
-    public void assigntask(Vistor v);
+    //assign task by client to visitor 
+    public void assigntask(Client c, Visitor v);
+
+    //display tasks assigned to visitor 
+    public void displaytaskVisitor(Visitor c);
 
 }
