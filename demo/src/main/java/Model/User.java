@@ -4,24 +4,6 @@ package Model;
 
 public class User {
     protected String firstname, lastname, username, password;
-    protected int taskid, taskqty; 
-
-
-    public int getTaskid() {
-        return taskid;
-    }
-
-    public void setTaskid(int taskid) {
-        this.taskid = taskid;
-    }
-
-    public int getTaskqty() {
-        return taskqty;
-    }
-
-    public void setTaskqty(int taskqty) {
-        this.taskqty = taskqty;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -55,7 +37,4 @@ public class User {
         this.password = password;
     }
 
- 
-    
-   
 }
