@@ -5,9 +5,9 @@ public class Client extends User {
     public Client(){
         
     }
-    public Client(String fname, String lname, String uname, String pwd) {
+
+    public Client(String fname, String lname, char[] uname, char[] pwd){
         super(fname, lname, uname, pwd);
-  
     }
 
 

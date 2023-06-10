@@ -3,20 +3,41 @@ package Model;
 
 
 public class User {
-    protected String firstname, lastname, username, password;
+    protected String firstname, lastname;
+    char[] username, password;
+
     protected int taskid, taskqty;
+
 
     public User(){
 
     }
     
-    public User(String fname, String lname, String uname, String pwd){
+    public User(String fname, String lname, char[] uname, char[] pwd){
         this.firstname = fname; 
         this.lastname = lname; 
         this.username = uname; 
         this.password = pwd; 
 
     }
+
+    public char[] getUsername() {
+        return username;
+    }
+
+    public void setUsername(char[] username) {
+        this.username = username;
+    }
+
+    public char[] getPassword() {
+        return password;
+    }
+
+    public void setPassword(char[] password) {
+        this.password = password;
+    }
+
+
 
     public int getTaskqty() {
         return taskqty;
@@ -50,20 +71,6 @@ public class User {
         this.lastname = lastname;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
 
 }
