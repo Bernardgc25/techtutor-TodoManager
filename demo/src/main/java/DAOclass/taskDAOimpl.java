@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import DAOinterface.TaskDAO;
 import Model.Client;
+import Model.Visitor;
 
 
 public class taskDAOimpl implements TaskDAO {
@@ -16,6 +17,8 @@ public class taskDAOimpl implements TaskDAO {
     public List<Integer> ctasks; // = new ArrayList<Client>();;
 
     Client c = new Client(); 
+    Visitor v = new Visitor(); 
+
     int nooftask;
 
     public taskDAOimpl()
@@ -47,7 +50,7 @@ public class taskDAOimpl implements TaskDAO {
 
     //update new task by client 
     @Override
-    public void updatetask(int task_id, int upd_task_id) {
+    public void updatetask(int task_id, int update_task_id) {
         //throw new UnsupportedOperationException("Unimplemented method 'updatetask'");   
  
         System.out.print("Select which task number to update: ");
@@ -57,24 +60,23 @@ public class taskDAOimpl implements TaskDAO {
         task_id = scobj.nextInt();
         
         //replace old task with new task
-        ctasks.set(task_id, upd_task_id);
+        ctasks.set(task_id, update_task_id);
 
         //System.out.println(name + " travelled " + miles + " miles.");
         System.out.print(" taskid "+task_id ); 
-        System.out.print(" is now change to taskid "+upd_task_id );
+        System.out.print(" is now change to taskid "+ update_task_id );
         System.out.print("\n");
     
     }
 
     //delete task by client on arraylist
     @Override
-    public void deletetask(int taskid) {
+    public void deletetask(int taskid, int delete_taskid) {
         //throw new UnsupportedOperationException("Unimplemented method 'deletetask'");
-       /*
         System.out.println("Enter taskid to remove: ");
             taskid = scobj.nextInt();
         
-        if (ctasks.contains(c)){
+        if (ctasks.contains(taskid)){
             ctasks.remove(taskid);      
             System.out.println("task removed");
             
@@ -82,28 +84,28 @@ public class taskDAOimpl implements TaskDAO {
         else{
             System.out.println("task doesn't exist");
         } 
-        */
     }
 
     //search task by client on arraylist
     @Override
     public void searchtask(int taskid) {
         //throw new UnsupportedOperationException("Unimplemented method 'searchtask'");
-        /* 
-        if (ctasks.contains(c)){
-            System.out.println("Found the task");
+        
+        if (ctasks.contains(taskid)){
+            System.out.println("taskid exist");
         } 
         else {
-            System.out.println("There is no such task");
+            System.out.println("taskid do not exist");
         }
-        */
-
     }
 
     //assign task by client to visitor 
     @Override
     public void assigntask() {
-        throw new UnsupportedOperationException("Unimplemented method 'assigntask'");
+        //throw new UnsupportedOperationException("Unimplemented method 'assigntask'");
+        System.out.println("Enter a new task for a visitor: ");
+        //taskid = scobj.nextInt();
+        v.setTaskid(scobj.nextInt());
     }
 
     //display tasks assigned to visitor 
@@ -111,14 +113,13 @@ public class taskDAOimpl implements TaskDAO {
     public void displaytaskVisitor() {
         //throw new UnsupportedOperationException("Unimplemented method 'displaytaskVisitor'");
         //display tasks before delete
-        /* 
+        
         System.out.println("list of tasks:"); 
         for(int i = 0; i < ctasks.size() ; i++)
         {
             System.out.println(ctasks.get(i));
-        
         } 
-        */
+    
     } 
 
 }

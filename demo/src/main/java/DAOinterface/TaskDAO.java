@@ -9,10 +9,10 @@ public interface TaskDAO {
     public void addtask(int task_id);
 
     //update new task by client 
-    public void updatetask(int task_id, int upd_task_id);
+    public void updatetask(int task_id, int update_task_id);
 
     //delete task by client on arraylist
-    public void deletetask(int taskid);
+    public void deletetask(int taskid, int delete_taskid);
     
     //search task by client on arraylist
     public void searchtask(int taskid);
