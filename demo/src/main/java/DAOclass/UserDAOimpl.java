@@ -9,22 +9,15 @@ import Model.User;
 import Model.Visitor;
 
 public class UserDAOimpl implements UserDAO {
-    // User u = new User();
-  
-
     String firstName, lastName, userName, password, choice;
-    int task; 
-    
     User u = new User(); 
-    //Client c = new Client();
-    //Visitor v = new Visitor();
 
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void register() {
 
-        // throw new UnsupportedOperationException("Unimplemented method 'register'");
+        //throw new UnsupportedOperationException("Unimplemented method 'register'");
         System.out.println("Are you a user(u) or client(c) ? ");
         choice = scanner.nextLine();
 
@@ -95,7 +88,6 @@ public class UserDAOimpl implements UserDAO {
 
     @Override
     public void Visitor_login() {
-        // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'Visitor_login'");
         Visitor v = new Visitor();
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
