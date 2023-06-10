@@ -9,7 +9,10 @@ import Model.User;
 import Model.Visitor;
 
 public class UserDAOimpl implements UserDAO {
-    String firstName, lastName, userName, password, choice;
+    String firstName, lastName; 
+    char [] userName;
+    char [] password;
+
     User u = new User(); 
 
     Scanner scanner = new Scanner(System.in);
@@ -19,7 +22,7 @@ public class UserDAOimpl implements UserDAO {
     UserDAOimpl m = new UserDAOimpl(); 
 
         //throw new UnsupportedOperationException("Unimplemented method 'main'");
-        System.out.println("Press (r) to register, if you have an account (l) to login ");
+        System.out.print("Press (r) to register, if you have an account (l) to login ");
         choice = scanner.next().charAt(0);
 
         if (choice == 'r' || choice == 'R') {
@@ -36,56 +39,100 @@ public class UserDAOimpl implements UserDAO {
     public void register(char choice) {
 
         //throw new UnsupportedOperationException("Unimplemented method 'register'");
-        System.out.println("Are you a user(u) or client(c) ? ");
+        System.out.print("Are you a client(c) or visitor(v) ? ");
         choice = scanner.next().charAt(0);
 
-        //visitor account
-        if (choice == 'v' || choice == 'V') {
-            System.out.println("Enter firstName: ");
-            firstName = scanner.nextLine();
+        //Client account
+        if (choice == 'c' || choice == 'C') {
+           
+            System.out.print("Enter firstName: ");
+            firstName = scanner.next();
+            scanner.nextLine();
+
             u.setFirstname(firstName);
 
-            System.out.println("Enter lastName: ");
-            lastName = scanner.nextLine();
+            System.out.print("Enter lastName: ");
+            lastName = scanner.next();
             u.setLastname(lastName);
-
-            /* 
-            System.out.println("Enter userName: ");
-            userName = scanner.nextLine();
-            u.setUsername(userName);
-
-            System.out.println("Enter password: ");
-            password = scanner.nextLine();
-            u.setPassword(password);
+            scanner.nextLine();
             
-            //create new visitor
-            Visitor v = new Visitor(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
-            System.out.println(v);
-            */
+            System.out.print("Enter userName: ");
+            userName = scanner.next().toCharArray();
+            u.setUsername(userName);
+            scanner.nextLine();
+            
+
+            System.out.print("Enter password: ");
+            password = scanner.next().toCharArray();
+            u.setPassword(password);
+            scanner.nextLine();
+            
+
+            //create new visitor account
+            Client c = new Client(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
+            //System.out.println(c);
+            
+            //display sername and password
+            System.out.println("you have succesfully register a client account");
+            System.out.print("USERNAME is: ");
+            for (char un:userName) {  
+            System.out.print(un);  
+            } 
+            
+            System.out.print("\n");
+            System.out.print("PASSWORD is: ");
+            for (char pwd:password) {  
+            System.out.print(pwd);  
+            } 
+            System.out.print("\n");
+
+
         } 
         //client account
-        else if (choice == 'c' || choice == 'C') {
-            System.out.println("Enter firstName: ");
-            firstName = scanner.nextLine();
+        else if (choice == 'v' || choice == 'V') {
+            System.out.print("Enter firstName: ");
+            firstName = scanner.next();
+            scanner.nextLine();
+
             u.setFirstname(firstName);
 
-            System.out.println("Enter lastName: ");
-            lastName = scanner.nextLine();
+            System.out.print("Enter lastName: ");
+            lastName = scanner.next();
             u.setLastname(lastName);
-
-            /*     
-            System.out.println("Enter userName: ");
-            userName = scanner.nextLine();
+            scanner.nextLine();
+            
+            System.out.print("Enter userName: ");
+            userName = scanner.next().toCharArray();
             u.setUsername(userName);
+            scanner.nextLine();
+            
 
-            System.out.println("Enter password: ");
-            password = scanner.nextLine();
+            System.out.print("Enter password: ");
+            password = scanner.next().toCharArray();
             u.setPassword(password);
+            scanner.nextLine();
+            
 
             //create new client account
-            Client c = new Client(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
-            System.out.println(c);
-            */
+            Visitor v = new Visitor(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
+            //System.out.println(v);
+            
+            //display sername and password
+            System.out.println("you have succesfully register a visitor account");
+            
+            System.out.print("USERNAME is: ");
+            for (char un:userName) {  
+            System.out.print(un);  
+            } 
+            
+            System.out.print("\n");
+            System.out.print("PASSWORD is: ");
+            for (char pwd:password) {  
+            System.out.print(pwd);  
+            } 
+           
+            System.out.print("\n");
+           
         }
     }
 
@@ -94,10 +141,10 @@ public class UserDAOimpl implements UserDAO {
         Client c = new Client();
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
         System.out.println(" Enter user name: ");
-        userName = scanner.nextLine();
+        userName = scanner.next().toCharArray();
 
         System.out.println(" Enter password: ");
-        password = scanner.nextLine();
+        password = scanner.next().toCharArray();
 
         if(userName.equals(c.getUsername()) && password.equals(c.getPassword())){
             System.out.println("User successfully logged-in..");
