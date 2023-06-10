@@ -1,17 +1,15 @@
 package DAOinterface;
 
-import java.util.ArrayList;
 
-import Model.Client;
 
 public interface TaskDAO {
     //CRUD functions
 
     //add new task by client
-    public void addtask();
+    public void addtask(int task_id);
 
     //update new task by client 
-    public void updatetask(int taskid);
+    public void updatetask(int task_id, int upd_task_id);
 
     //delete task by client on arraylist
     public void deletetask(int taskid);

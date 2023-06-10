@@ -9,10 +9,13 @@ import Model.Visitor;
 
 public class UserDAOimpl implements UserDAO {
     // User u = new User();
-    Client c = new Client();
-    Visitor v = new Visitor();
+  
 
     String firstName, lastName, userName, password, choice;
+    int task; 
+    
+    Client c = new Client();
+    Visitor v = new Visitor();
 
     Scanner scanner = new Scanner(System.in);
 
