@@ -1,8 +1,9 @@
-package Model;
+package TaskMenu;
 
 import DAOclass.taskDAOimpl;
 
-public class Menu {
+
+public class taskMenu {
     taskDAOimpl task = new taskDAOimpl(); 
 
     public void disp_Clientmenu(char letter, int t_id, int del_tid, int upd_tid) {

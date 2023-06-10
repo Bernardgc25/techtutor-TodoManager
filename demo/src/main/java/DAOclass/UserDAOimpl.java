@@ -17,6 +17,7 @@ public class UserDAOimpl implements UserDAO {
 
     Scanner scanner = new Scanner(System.in);
 
+    /* 
     @Override
     public void main(char choice) {
     UserDAOimpl m = new UserDAOimpl(); 
@@ -32,7 +33,7 @@ public class UserDAOimpl implements UserDAO {
             m.Client_login();
         }       
     }
-
+    */
     
 
     @Override
@@ -44,95 +45,87 @@ public class UserDAOimpl implements UserDAO {
 
         //Client account
         if (choice == 'c' || choice == 'C') {
-           
+            //save input into variable including spaces 
+            scanner.nextLine(); 
             System.out.print("Enter firstName: ");
-            firstName = scanner.next();
-            scanner.nextLine();
-
+            firstName = scanner.nextLine();
             u.setFirstname(firstName);
+            //scanner.nextLine(); 
 
             System.out.print("Enter lastName: ");
-            lastName = scanner.next();
+            lastName = scanner.nextLine();
             u.setLastname(lastName);
-            scanner.nextLine();
             
             System.out.print("Enter userName: ");
             userName = scanner.next().toCharArray();
             u.setUsername(userName);
             scanner.nextLine();
             
-
             System.out.print("Enter password: ");
             password = scanner.next().toCharArray();
             u.setPassword(password);
             scanner.nextLine();
             
-
             //create new visitor account
             Client c = new Client(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
             //System.out.println(c);
             
-            //display sername and password
+            //display info
             System.out.println("you have succesfully register a client account");
-            System.out.print("USERNAME is: ");
-            for (char un:userName) {  
-            System.out.print(un);  
-            } 
+            System.out.print("FIRST NAME is: ");
+            System.out.println(c.getFirstname());
+        
+            System.out.print("LAST NAME is: ");
+            System.out.println(c.getLastname());
             
-            System.out.print("\n");
+            System.out.print("USERNAME is: ");
+            System.out.println(c.getUsername());
+        
             System.out.print("PASSWORD is: ");
-            for (char pwd:password) {  
-            System.out.print(pwd);  
-            } 
-            System.out.print("\n");
-
-
+            System.out.println(c.getPassword());
+            
         } 
         //client account
         else if (choice == 'v' || choice == 'V') {
+            //save input into variable including spaces 
+            scanner.nextLine(); 
             System.out.print("Enter firstName: ");
-            firstName = scanner.next();
-            scanner.nextLine();
-
+            firstName = scanner.nextLine();
             u.setFirstname(firstName);
+            //scanner.nextLine(); 
 
             System.out.print("Enter lastName: ");
-            lastName = scanner.next();
+            lastName = scanner.nextLine();
             u.setLastname(lastName);
-            scanner.nextLine();
             
             System.out.print("Enter userName: ");
             userName = scanner.next().toCharArray();
             u.setUsername(userName);
             scanner.nextLine();
             
-
             System.out.print("Enter password: ");
             password = scanner.next().toCharArray();
             u.setPassword(password);
             scanner.nextLine();
-            
-
+        
             //create new client account
             Visitor v = new Visitor(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
             //System.out.println(v);
             
-            //display sername and password
-            System.out.println("you have succesfully register a visitor account");
+            //display info
+            System.out.println("you have succesfully register a client account");
+            System.out.print("FIRST NAME is: ");
+            System.out.println(v.getFirstname());
+        
+            System.out.print("LAST NAME is: ");
+            System.out.println(v.getLastname());
             
             System.out.print("USERNAME is: ");
-            for (char un:userName) {  
-            System.out.print(un);  
-            } 
-            
-            System.out.print("\n");
+            System.out.println(v.getUsername());
+        
             System.out.print("PASSWORD is: ");
-            for (char pwd:password) {  
-            System.out.print(pwd);  
-            } 
-           
-            System.out.print("\n");
-           
+            System.out.println(v.getPassword());
+          
         }
     }
 
