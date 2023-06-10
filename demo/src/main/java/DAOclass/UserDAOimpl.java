@@ -133,17 +133,44 @@ public class UserDAOimpl implements UserDAO {
     public void Client_login() {
         Client c = new Client();
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
-        System.out.println(" Enter user name: ");
-        userName = scanner.next().toCharArray();
+        /*
+         *     scanner.nextLine(); 
+            System.out.print("Enter firstName: ");
+            firstName = scanner.nextLine();
+            u.setFirstname(firstName);
+         */
 
-        System.out.println(" Enter password: ");
+        /* 
+        System.out.print("USERNAME is: ");
+        System.out.println(c.getUsername());
+        
+        System.out.print("PASSWORD is: ");
+        System.out.println(c.getPassword());
+        */
+
+        System.out.print("Enter username: ");
+        userName = scanner.next().toCharArray();
+        c.getUsername();
+        scanner.nextLine();
+
+        System.out.print("Enter password: ");
         password = scanner.next().toCharArray();
+        c.getPassword();
+        scanner.nextLine();
 
         if(userName.equals(c.getUsername()) && password.equals(c.getPassword())){
             System.out.println("User successfully logged-in..");
         }            
         else{
-            System.out.println("Invalid try again");
+            System.out.println("No records, Invalid try again");
+            
+            /* 
+            System.out.print("USERNAME is: ");
+            System.out.println(c.getUsername());
+        
+            System.out.print("PASSWORD is: ");
+            System.out.println(c.getPassword());
+            */
         }
 
     }

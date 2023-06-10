@@ -37,4 +37,37 @@ public class registermenu {
         }
 
     }
+
+      public void login_menu(char letter){
+        UserDAOimpl l = new UserDAOimpl(); 
+        
+        System.out.println("");
+        System.out.println("Log-in account");
+        System.out.println("(C) Client");
+        System.out.println("(V) Visitor");
+
+        System.out.println("");
+        System.out.print("Enter a choice: ");
+        letter = scanner.next().charAt(0);
+        
+        switch (letter) {
+        //login as client 
+        case 'c':
+            l.Client_login();  
+            break;
+        case 'C':
+            l.Client_login();  
+            break;
+        
+        //login as visitor
+        case 'v':
+          
+            break;
+        case 'V':
+         
+            break;
+        }
+
+    }
+
 }

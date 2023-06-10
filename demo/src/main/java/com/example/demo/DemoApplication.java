@@ -20,6 +20,10 @@ public class DemoApplication {
 		registermenu rm = new registermenu(); 
 
 		rm.reg_menu(choice);
+		System.out.print("\033[H\033[2J");  
+		System.out.flush();  
+	
+		rm.login_menu(choice);
 
 
 	}
