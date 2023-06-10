@@ -6,7 +6,18 @@ public class User {
     protected String firstname, lastname, username, password;
     protected int taskid, taskqty;
 
-  
+    public User(){
+
+    }
+    
+    public User(String fname, String lname, String uname, String pwd){
+        this.firstname = fname; 
+        this.lastname = lname; 
+        this.username = uname; 
+        this.password = pwd; 
+
+    }
+
     public int getTaskqty() {
         return taskqty;
     }
