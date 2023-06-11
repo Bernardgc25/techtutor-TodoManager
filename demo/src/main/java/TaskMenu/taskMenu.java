@@ -18,14 +18,17 @@ public class taskMenu {
     Scanner scanner = new Scanner(System.in);
 
 
-    public void disp_Clientmenu(char letter, int t_id, int del_tid, int upd_tid) {
-        
+    public char disp_Clientmenu(char letter, int t_id, int del_tid, int upd_tid) {
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+
         System.out.println("You are logged in as client..");
         System.out.println("A) Display assigned tasks");
         System.out.println("B) Add a task");
         System.out.println("C) Delete a task");
         System.out.println("D) Update a task");
         System.out.println("E) Search a task");
+        System.out.println("X) Exit");
         
         System.out.println("");
         System.out.print("Enter a choice: ");
@@ -73,7 +76,18 @@ public class taskMenu {
         case 'e':
             task.searchtask(t_id);
             break;
+
+        //exit menu    
+        case 'X':
+            //task.exitTaskmenu();
+            break;
+        
+        case 'x':
+           // task.exitTaskmenu();
+            break;    
+
         }
+        return letter;
     
     }
 

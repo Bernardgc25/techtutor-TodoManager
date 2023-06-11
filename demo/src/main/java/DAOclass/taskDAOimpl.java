@@ -38,7 +38,9 @@ public class taskDAOimpl implements TaskDAO {
     @Override
     public void addtask(int task_id) {
         //throw new UnsupportedOperationException("Unimplemented method 'addtask'");
-        
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+            
             //prompt to add new task number
             System.out.print("Enter task number: ");
             task_id = scobj.nextInt();
@@ -132,6 +134,15 @@ public class taskDAOimpl implements TaskDAO {
             System.out.println(ctasks.get(i));
         } 
     
-    } 
+    }
 
+    /* 
+    @Override
+    public String exitTaskmenu() {
+        //throw new UnsupportedOperationException("Unimplemented method 'exitTaskmenu'");
+        //System.exit(0);
+        
+        return "exit"; 
+    } 
+    */
 }

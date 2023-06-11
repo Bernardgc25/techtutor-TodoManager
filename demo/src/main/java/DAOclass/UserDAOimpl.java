@@ -32,6 +32,7 @@ public class UserDAOimpl implements UserDAO {
     public List<Visitor> visitors_list = new ArrayList<Visitor>();;
     
     User u = new User(); 
+    taskDAOimpl exitM = new taskDAOimpl(); 
 
     Scanner scanner = new Scanner(System.in);
 
@@ -201,11 +202,23 @@ public class UserDAOimpl implements UserDAO {
             }
         }
         */
-        taskMenu tm = new taskMenu(); 
+        taskMenu tm = new taskMenu();
+        boolean flag = true;
+        char cMenu = '\0';
+
         //display client task menu  
-        tm.disp_Clientmenu(letter, t_id, del_tid, upd_tid);
-        
-    }
+        //keep repeating until user decide to stop 
+        while(true){
+            cMenu = tm.disp_Clientmenu(letter, t_id, del_tid, upd_tid);
+
+            if (cMenu == 'x' || cMenu == 'X'){
+                break;
+            }
+        }
+
+}
+
+
 
     @Override
     public void Visitor_login() {
