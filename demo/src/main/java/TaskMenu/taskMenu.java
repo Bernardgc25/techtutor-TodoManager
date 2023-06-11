@@ -1,18 +1,36 @@
 package TaskMenu;
 
+import java.util.Scanner;
+
 import DAOclass.taskDAOimpl;
 
 
 public class taskMenu {
+    public taskMenu(){
+        /* 
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+        */
+    }
+    
+    
     taskDAOimpl task = new taskDAOimpl(); 
+    Scanner scanner = new Scanner(System.in);
+
 
     public void disp_Clientmenu(char letter, int t_id, int del_tid, int upd_tid) {
+        
+        System.out.println("You are logged in as client..");
         System.out.println("A) Display assigned tasks");
         System.out.println("B) Add a task");
         System.out.println("C) Delete a task");
         System.out.println("D) Update a task");
         System.out.println("E) Search a task");
         
+        System.out.println("");
+        System.out.print("Enter a choice: ");
+        letter = scanner.next().charAt(0);
+
         switch (letter) {
         //display assigned tasks    
         case 'A':

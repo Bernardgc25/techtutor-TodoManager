@@ -9,6 +9,7 @@ import DAOinterface.UserDAO;
 import Model.Client;
 import Model.User;
 import Model.Visitor;
+import TaskMenu.taskMenu;
 
 public class UserDAOimpl implements UserDAO {
 
@@ -16,6 +17,11 @@ public class UserDAOimpl implements UserDAO {
     //for initialize
     String firstName, lastName; 
     char[] userName, password, un, pwd;
+
+    char letter = '\0'; 
+    int t_id = 0;
+    int del_tid = 0;
+    int upd_tid = 0;
 
     //for retrieving
     //char[] uN, uP;
@@ -166,7 +172,10 @@ public class UserDAOimpl implements UserDAO {
     @Override
     public void Client_login() {
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
+      
+
         Client c = new Client();
+       
 
         System.out.print("Enter username: ");
         un = scanner.next().toCharArray();
@@ -176,8 +185,12 @@ public class UserDAOimpl implements UserDAO {
         pwd= scanner.next().toCharArray();
         scanner.nextLine();
 
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
 
-        System.out.println("You are logged in as client..");
+        //System.out.println("You are logged in as client..");
+
+        /* 
         //System.out.println("User successfully logged-in..");
         for(int i=0;i<clients_list.size();i++){
             if((clients_list.get(i).getUsername().equals(un) )&& (clients_list.get(i).getPassword().equals(pwd))){
@@ -186,7 +199,11 @@ public class UserDAOimpl implements UserDAO {
             else{
                 System.out.println("No records, Invalid try again");    
             }
-        }    
+        }
+        */
+        taskMenu tm = new taskMenu(); 
+        //display client task menu  
+        tm.disp_Clientmenu(letter, t_id, del_tid, upd_tid);
         
     }
 

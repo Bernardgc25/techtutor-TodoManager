@@ -8,7 +8,8 @@ public class registermenu {
     Scanner scanner = new Scanner(System.in);
     
     public void reg_menu(char letter){
-        UserDAOimpl m = new UserDAOimpl(); 
+        UserDAOimpl m = new UserDAOimpl();
+        registermenu lm = new registermenu(); 
         
         System.out.println("(R) Register");
         System.out.println("(L) Login");
@@ -32,10 +33,10 @@ public class registermenu {
         
         //login
         case 'l':
-            m.Client_login();
+            lm.login_menu(letter);
             break;
         case 'L':
-            m.Client_login();
+            lm.login_menu(letter);
             break;
         }
 
@@ -44,8 +45,8 @@ public class registermenu {
       public void login_menu(char letter){
         UserDAOimpl l = new UserDAOimpl(); 
         
-        System.out.println("");
-        System.out.println("Log-in account");
+        //System.out.println("");
+        System.out.println("Log-in as");
         System.out.println("(C) Client");
         System.out.println("(V) Visitor");
 

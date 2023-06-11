@@ -23,7 +23,7 @@ public class taskDAOimpl implements TaskDAO {
 
     public taskDAOimpl()
     {
-        /* 
+         /* 
         System.out.print("Enter no of tasks to add: ");
         nooftask=scobj.nextInt();
         System.out.print("\n");
@@ -38,6 +38,15 @@ public class taskDAOimpl implements TaskDAO {
     @Override
     public void addtask(int task_id) {
         //throw new UnsupportedOperationException("Unimplemented method 'addtask'");
+        
+            //prompt to add new task number
+            System.out.print("Enter task number: ");
+            task_id = scobj.nextInt();
+            ctasks.add(task_id);   
+        
+        
+        
+        /* 
         for(int index=0;index<ctasks.size();index++)
         {
             //System.out.print("\033[H\033[2J");  
@@ -48,6 +57,7 @@ public class taskDAOimpl implements TaskDAO {
             task_id = scobj.nextInt();
             ctasks.add(task_id);   
         } 
+        */
     }
 
     //update new task by client 
