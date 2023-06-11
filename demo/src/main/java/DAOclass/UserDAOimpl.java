@@ -1,5 +1,7 @@
 package DAOclass;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import DAOinterface.UserDAO;
@@ -9,14 +11,29 @@ import Model.User;
 import Model.Visitor;
 
 public class UserDAOimpl implements UserDAO {
-    String firstName, lastName; 
-    char [] userName;
-    char [] password;
 
+    
+    //for initialize
+    String firstName, lastName; 
+    char[] userName, password;
+
+    //for retrieving
+    //char[] uN, uP;
+
+    //list of clients
+    public List<Client> clients_list = new ArrayList<Client>();
+    //list of visitors 
+    public List<Visitor> visitors_list = new ArrayList<Visitor>();;
+    
     User u = new User(); 
 
     Scanner scanner = new Scanner(System.in);
 
+    //constructor 
+    public UserDAOimpl(){
+
+    }
+    
     /* 
     @Override
     public void main(char choice) {
@@ -69,23 +86,26 @@ public class UserDAOimpl implements UserDAO {
             //create new visitor account
             Client c = new Client(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
             //System.out.println(c);
-            
+            //create new visitor account
+            //add object to arraylist
+            clients_list.add(c);
+
             //display info
             System.out.println("you have succesfully register a client account");
-            System.out.print("FIRST NAME is: ");
-            System.out.println(c.getFirstname());
-        
-            System.out.print("LAST NAME is: ");
-            System.out.println(c.getLastname());
-            
-            System.out.print("USERNAME is: ");
-            System.out.println(c.getUsername());
-        
-            System.out.print("PASSWORD is: ");
-            System.out.println(c.getPassword());
+            System.out.println("\n");
+            for(int i=0;i<clients_list.size();i++){
+                System.out.print("FIRST NAME is: ");
+                System.out.println(clients_list.get(i).getFirstname());
+                System.out.print("LAST NAME is: ");
+                System.out.println(clients_list.get(i).getLastname());
+                System.out.print("USERNAME is: ");
+                System.out.println(clients_list.get(i).getUsername());
+                System.out.print("PASSWORD is: ");
+                System.out.println(clients_list.get(i).getPassword());      
+            }       
             
         } 
-        //client account
+        //visitor account
         else if (choice == 'v' || choice == 'V') {
             //save input into variable including spaces 
             scanner.nextLine(); 
@@ -111,68 +131,66 @@ public class UserDAOimpl implements UserDAO {
             //create new client account
             Visitor v = new Visitor(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
             //System.out.println(v);
+            //add object to arraylist
+            visitors_list.add(v);
             
             //display info
-            System.out.println("you have succesfully register a client account");
-            System.out.print("FIRST NAME is: ");
-            System.out.println(v.getFirstname());
-        
-            System.out.print("LAST NAME is: ");
-            System.out.println(v.getLastname());
             
-            System.out.print("USERNAME is: ");
-            System.out.println(v.getUsername());
-        
-            System.out.print("PASSWORD is: ");
-            System.out.println(v.getPassword());
-          
+            System.out.println("\n");
+            for(int i=0;i<clients_list.size();i++){
+                System.out.print("FIRST NAME is: ");
+                System.out.println(clients_list.get(i).getFirstname());
+                System.out.print("LAST NAME is: ");
+                System.out.println(clients_list.get(i).getLastname());
+                System.out.print("USERNAME is: ");
+                System.out.println(clients_list.get(i).getUsername());
+                System.out.print("PASSWORD is: ");
+                System.out.println(clients_list.get(i).getPassword());      
+            }                
         }
     }
 
     @Override
     public void Client_login() {
-        Client c = new Client();
-        // throw new UnsupportedOperationException("Unimplemented method 'login'");
-        /*
-         *     scanner.nextLine(); 
-            System.out.print("Enter firstName: ");
-            firstName = scanner.nextLine();
-            u.setFirstname(firstName);
-         */
 
-        /* 
-        System.out.print("USERNAME is: ");
-        System.out.println(c.getUsername());
         
-        System.out.print("PASSWORD is: ");
-        System.out.println(c.getPassword());
-        */
+        Client cu = new Client();
+        Client cp = new Client();
+
+        // throw new UnsupportedOperationException("Unimplemented method 'login'");
 
         System.out.print("Enter username: ");
         userName = scanner.next().toCharArray();
-        c.getUsername();
         scanner.nextLine();
 
         System.out.print("Enter password: ");
         password = scanner.next().toCharArray();
-        c.getPassword();
         scanner.nextLine();
 
+        /* 
+        UserDAOimpl clientUN = new UserDAOimpl(); 
+        UserDAOimpl clientPWD = new UserDAOimpl(); 
+        
+        cu = clientUN.find_ClientUsername(userName);
+        cp = clientPWD.find_ClientPassword(password);
+
+        System.out.print("USERNAME is: ");
+        System.out.println(cu);
+        
+        System.out.print("PASSWORD is: ");
+        System.out.println(cp);
+        */
+        
+        
+        /* 
         if(userName.equals(c.getUsername()) && password.equals(c.getPassword())){
             System.out.println("User successfully logged-in..");
         }            
         else{
-            System.out.println("No records, Invalid try again");
-            
-            /* 
-            System.out.print("USERNAME is: ");
-            System.out.println(c.getUsername());
-        
-            System.out.print("PASSWORD is: ");
-            System.out.println(c.getPassword());
-            */
+            System.out.println("No records, Invalid try again");       
         }
-
+        */
+        
     }
 
     @Override
@@ -197,6 +215,30 @@ public class UserDAOimpl implements UserDAO {
         }
         */
     }
+
+    public Client find_ClientUsername(char[] uN){
+        
+        //retrive a password
+        for (Client cl : clients_list) {
+            if (cl.getUsername().equals(uN)) {
+            return cl;
+            }
+        }
+        return null;
+    }
+
+    public Client find_ClientPassword(char[] uP){
+        
+        //retrive a password
+        for (Client cl : clients_list) {
+            if (cl.getPassword().equals(password)) {
+            return cl;
+            }
+        }
+        return null;
+    }
+
+
 
   
 }
