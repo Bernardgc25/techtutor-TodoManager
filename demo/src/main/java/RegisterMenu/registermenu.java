@@ -16,6 +16,9 @@ public class registermenu {
         System.out.println("");
         System.out.print("Enter a choice: ");
         letter = scanner.next().charAt(0);
+
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();  
         
         
         switch (letter) {
@@ -49,6 +52,9 @@ public class registermenu {
         System.out.println("");
         System.out.print("Enter a choice: ");
         letter = scanner.next().charAt(0);
+
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();  
         
         switch (letter) {
         //login as client 

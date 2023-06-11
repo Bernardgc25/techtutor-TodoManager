@@ -15,7 +15,7 @@ public class UserDAOimpl implements UserDAO {
     
     //for initialize
     String firstName, lastName; 
-    char[] userName, password;
+    char[] userName, password, un, pwd;
 
     //for retrieving
     //char[] uN, uP;
@@ -60,6 +60,9 @@ public class UserDAOimpl implements UserDAO {
         System.out.print("Are you a client(c) or visitor(v) ? ");
         choice = scanner.next().charAt(0);
 
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();  
+
         //Client account
         if (choice == 'c' || choice == 'C') {
             //save input into variable including spaces 
@@ -83,16 +86,20 @@ public class UserDAOimpl implements UserDAO {
             u.setPassword(password);
             scanner.nextLine();
             
-            //create new visitor account
+            //create new client account
             Client c = new Client(u.getFirstname(), u.getLastname(), u.getUsername(), u.getPassword());
             //System.out.println(c);
             //create new visitor account
             //add object to arraylist
             clients_list.add(c);
 
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
             //display info
             System.out.println("you have succesfully register a client account");
-            System.out.println("\n");
+            //System.out.print("\n");
+            
+            /*  
             for(int i=0;i<clients_list.size();i++){
                 System.out.print("FIRST NAME is: ");
                 System.out.println(clients_list.get(i).getFirstname());
@@ -103,7 +110,7 @@ public class UserDAOimpl implements UserDAO {
                 System.out.print("PASSWORD is: ");
                 System.out.println(clients_list.get(i).getPassword());      
             }       
-            
+            */
         } 
         //visitor account
         else if (choice == 'v' || choice == 'V') {
@@ -134,8 +141,13 @@ public class UserDAOimpl implements UserDAO {
             //add object to arraylist
             visitors_list.add(v);
             
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
             //display info
-            
+            System.out.println("you have succesfully register a visitor account");
+            //System.out.print("\n");
+            /* 
+            //display info
             System.out.println("\n");
             for(int i=0;i<clients_list.size();i++){
                 System.out.print("FIRST NAME is: ");
@@ -146,99 +158,62 @@ public class UserDAOimpl implements UserDAO {
                 System.out.println(clients_list.get(i).getUsername());
                 System.out.print("PASSWORD is: ");
                 System.out.println(clients_list.get(i).getPassword());      
-            }                
+            }    
+            */             
         }
     }
 
     @Override
     public void Client_login() {
-
-        
-        Client cu = new Client();
-        Client cp = new Client();
-
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
+        Client c = new Client();
 
         System.out.print("Enter username: ");
-        userName = scanner.next().toCharArray();
+        un = scanner.next().toCharArray();
         scanner.nextLine();
 
         System.out.print("Enter password: ");
-        password = scanner.next().toCharArray();
+        pwd= scanner.next().toCharArray();
         scanner.nextLine();
 
-        /* 
-        UserDAOimpl clientUN = new UserDAOimpl(); 
-        UserDAOimpl clientPWD = new UserDAOimpl(); 
-        
-        cu = clientUN.find_ClientUsername(userName);
-        cp = clientPWD.find_ClientPassword(password);
 
-        System.out.print("USERNAME is: ");
-        System.out.println(cu);
-        
-        System.out.print("PASSWORD is: ");
-        System.out.println(cp);
-        */
-        
-        
-        /* 
-        if(userName.equals(c.getUsername()) && password.equals(c.getPassword())){
-            System.out.println("User successfully logged-in..");
-        }            
-        else{
-            System.out.println("No records, Invalid try again");       
-        }
-        */
+        System.out.println("You are logged in as client..");
+        //System.out.println("User successfully logged-in..");
+        for(int i=0;i<clients_list.size();i++){
+            if((clients_list.get(i).getUsername().equals(un) )&& (clients_list.get(i).getPassword().equals(pwd))){
+                System.out.println("User successfully logged-in..");
+            }
+            else{
+                System.out.println("No records, Invalid try again");    
+            }
+        }    
         
     }
 
     @Override
     public void Visitor_login() {
         //throw new UnsupportedOperationException("Unimplemented method 'Visitor_login'");
-
-        /* 
         Visitor v = new Visitor();
-        // throw new UnsupportedOperationException("Unimplemented method 'login'");
 
-        System.out.println(" Enter user name: ");
-        userName = scanner.nextLine();
+        System.out.print("Enter username: ");
+        un = scanner.next().toCharArray();
+        scanner.nextLine();
 
-        System.out.println(" Enter password: ");
-        password = scanner.nextLine();
+        System.out.print("Enter password: ");
+        pwd= scanner.next().toCharArray();
+        scanner.nextLine();
 
-        if(userName.equals(v.getUsername()) && password.equals(v.getPassword())){
-            System.out.println("User successfully logged-in..");
-        }            
-        else{
-            System.out.println("Invalid try again");
-        }
-        */
-    }
-
-    public Client find_ClientUsername(char[] uN){
-        
-        //retrive a password
-        for (Client cl : clients_list) {
-            if (cl.getUsername().equals(uN)) {
-            return cl;
+        System.out.println("You are logged in as Visitor..");
+        //System.out.println("User successfully logged-in..");
+        for(int i=0;i<visitors_list.size();i++){
+            if((visitors_list.get(i).getUsername().equals(un) )&& (visitors_list.get(i).getPassword().equals(pwd))){
+                System.out.println("User successfully logged-in..");
             }
-        }
-        return null;
-    }
-
-    public Client find_ClientPassword(char[] uP){
-        
-        //retrive a password
-        for (Client cl : clients_list) {
-            if (cl.getPassword().equals(password)) {
-            return cl;
+            else{
+                System.out.println("No records, Invalid try again");    
             }
-        }
-        return null;
+        }    
+
     }
 
-
-
-  
 }
