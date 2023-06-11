@@ -68,10 +68,10 @@ public class registermenu {
         
         //login as visitor
         case 'v':
-          
+            l.Visitor_login();
             break;
         case 'V':
-         
+            l.Visitor_login();
             break;
         }
 

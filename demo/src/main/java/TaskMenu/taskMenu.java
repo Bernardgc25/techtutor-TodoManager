@@ -23,12 +23,12 @@ public class taskMenu {
 		System.out.flush();
 
         System.out.println("You are logged in as client..");
-        System.out.println("A) Display assigned tasks");
-        System.out.println("B) Add a task");
-        System.out.println("C) Delete a task");
-        System.out.println("D) Update a task");
-        System.out.println("E) Search a task");
-        System.out.println("X) Exit");
+        System.out.println("(A) Display assigned tasks");
+        System.out.println("(B) Add a task");
+        System.out.println("(C) Delete a task");
+        System.out.println("(D) Update a task");
+        System.out.println("(E) Search a task");
+        System.out.println("(X) Exit");
         
         System.out.println("");
         System.out.print("Enter a choice: ");
@@ -91,9 +91,18 @@ public class taskMenu {
     
     }
 
-    public void disp_VistorMenu(char letter) {
+    public char disp_VistorMenu(char letter) {
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+
+        System.out.println("You are logged in as client..");
         
-        System.out.println("A || a) Display assigned tasks");
+        System.out.println("(A) Display assigned tasks");
+        System.out.println("(X) Exit");
+
+        System.out.println("");
+        System.out.print("Enter a choice: ");
+        letter = scanner.next().charAt(0);
         
         switch (letter) {
         //display assigned tasks    
@@ -103,7 +112,15 @@ public class taskMenu {
         case 'a':
             task.displaytaskVisitor();
             break;
+        case 'X':
+            //task.exitTaskmenu();
+            break;
+        
+        case 'x':
+           // task.exitTaskmenu();
+            break;    
         }
+        return letter;
     }
 
 }

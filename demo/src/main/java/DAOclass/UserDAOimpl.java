@@ -23,6 +23,13 @@ public class UserDAOimpl implements UserDAO {
     int del_tid = 0;
     int upd_tid = 0;
 
+    taskMenu tm = new taskMenu();
+    boolean flag = true;
+    char cMenu = '\0';
+    char vMenu = '\0';
+
+
+
     //for retrieving
     //char[] uN, uP;
 
@@ -173,11 +180,8 @@ public class UserDAOimpl implements UserDAO {
     @Override
     public void Client_login() {
         // throw new UnsupportedOperationException("Unimplemented method 'login'");
-      
-
         Client c = new Client();
        
-
         System.out.print("Enter username: ");
         un = scanner.next().toCharArray();
         scanner.nextLine();
@@ -189,9 +193,9 @@ public class UserDAOimpl implements UserDAO {
         System.out.print("\033[H\033[2J");  
 		System.out.flush();
 
-        //System.out.println("You are logged in as client..");
-
         /* 
+        System.out.println("You are logged in as client..");
+
         //System.out.println("User successfully logged-in..");
         for(int i=0;i<clients_list.size();i++){
             if((clients_list.get(i).getUsername().equals(un) )&& (clients_list.get(i).getPassword().equals(pwd))){
@@ -202,10 +206,7 @@ public class UserDAOimpl implements UserDAO {
             }
         }
         */
-        taskMenu tm = new taskMenu();
-        boolean flag = true;
-        char cMenu = '\0';
-
+  
         //display client task menu  
         //keep repeating until user decide to stop 
         while(true){
@@ -233,6 +234,7 @@ public class UserDAOimpl implements UserDAO {
         pwd= scanner.next().toCharArray();
         scanner.nextLine();
 
+        /* 
         System.out.println("You are logged in as Visitor..");
         //System.out.println("User successfully logged-in..");
         for(int i=0;i<visitors_list.size();i++){
@@ -243,6 +245,17 @@ public class UserDAOimpl implements UserDAO {
                 System.out.println("No records, Invalid try again");    
             }
         }    
+        */
+
+        //display client task menu  
+        //keep repeating until user decide to stop 
+        while(true){
+            //cMenu = tm.disp_Clientmenu(letter, t_id, del_tid, upd_tid);
+            vMenu = tm.disp_VistorMenu(letter);
+            if (vMenu == 'x' || vMenu == 'X'){
+                break;
+            }
+        }
 
     }
 
