@@ -28,6 +28,8 @@ public class UserDAOimpl implements UserDAO {
     char cMenu = '\0';
     char vMenu = '\0';
 
+    taskDAOimpl task = new taskDAOimpl();
+
 
 
     //for retrieving
@@ -222,6 +224,11 @@ public class UserDAOimpl implements UserDAO {
             if (cMenu == 'x' || cMenu == 'X'){
                 break;
             }
+            
+            else if(cMenu == 'a' || cMenu == 'A'){
+                //task.displaytaskVisitor();
+            }
+            
         }
 
 }

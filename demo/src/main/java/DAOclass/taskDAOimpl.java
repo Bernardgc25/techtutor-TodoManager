@@ -16,10 +16,13 @@ public class taskDAOimpl implements TaskDAO {
     public List<Integer> vtasks = new ArrayList<Integer>();
     public List<Integer> ctasks = new ArrayList<Integer>(); 
 
+    String disp_Tasks = null;
+
     Client c = new Client(); 
     Visitor v = new Visitor(); 
 
     int nooftask;
+    char letter = '\0';
 
     public taskDAOimpl()
     {
@@ -45,7 +48,7 @@ public class taskDAOimpl implements TaskDAO {
             System.out.print("Enter task number: ");
             task_id = scobj.nextInt();
             ctasks.add(task_id);   
-        
+
         
         
         /* 
@@ -127,14 +130,30 @@ public class taskDAOimpl implements TaskDAO {
     public void displaytaskVisitor() {
         //throw new UnsupportedOperationException("Unimplemented method 'displaytaskVisitor'");
         //display tasks before delete
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+        
         
         System.out.println("list of tasks:"); 
         for(int i = 0; i < ctasks.size() ; i++)
         {
-            System.out.println(ctasks.get(i));
+            System.out.println("taskid:" +ctasks.get(i));
+            //System.out.print(" ");
+            //System.out.print(ctasks.get(i));
+          
         } 
-    
+        System.out.println("");
+        System.out.println("");
+        System.out.print("press (Y) go back to menu: ");
+        letter = scobj.next().charAt(0);
+
+        System.out.println("");
+        if(letter == 'y' || letter == 'Y'){
+            return; 
+        }
+        
+ 
+        
     }
-
-
+    
 }
