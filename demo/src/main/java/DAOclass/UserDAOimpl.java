@@ -71,7 +71,14 @@ public class UserDAOimpl implements UserDAO {
     public void register(char choice) {
 
         //throw new UnsupportedOperationException("Unimplemented method 'register'");
-        System.out.print("Are you a client(c) or visitor(v) ? ");
+
+
+        System.out.println("(C) register as a client");
+        System.out.println("(V) register as a visitor");
+
+        System.out.println("");
+        System.out.print("Enter your option: ");
+        //System.out.print("Are you a client(c) or visitor(v) ? ");
         choice = scanner.next().charAt(0);
 
         System.out.print("\033[H\033[2J");  

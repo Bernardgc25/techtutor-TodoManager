@@ -36,7 +36,7 @@ public class DemoApplication {
 			
 
 
-       		int choose = scn.nextInt();
+			int choose = scn.nextInt();
 			if( choose == 1 ) {
 				flag = true;
 			} 

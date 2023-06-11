@@ -79,11 +79,15 @@ public class taskMenu {
 
         //exit menu    
         case 'X':
-            //task.exitTaskmenu();
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+       
             break;
         
         case 'x':
-           // task.exitTaskmenu();
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+               
             break;    
 
         }
@@ -113,11 +117,15 @@ public class taskMenu {
             task.displaytaskVisitor();
             break;
         case 'X':
-            //task.exitTaskmenu();
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+         
             break;
         
         case 'x':
-           // task.exitTaskmenu();
+             System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+       
             break;    
         }
         return letter;
