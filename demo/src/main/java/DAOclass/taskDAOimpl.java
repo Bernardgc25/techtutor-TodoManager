@@ -13,8 +13,8 @@ public class taskDAOimpl implements TaskDAO {
     //protected int taskid, taskqty;
     
     public Scanner scobj = new Scanner(System.in);
-    public List<Integer> vtasks;
-    public List<Integer> ctasks; // = new ArrayList<Client>();;
+    public List<Integer> vtasks = new ArrayList<Integer>();
+    public List<Integer> ctasks = new ArrayList<Integer>(); 
 
     Client c = new Client(); 
     Visitor v = new Visitor(); 
@@ -23,6 +23,7 @@ public class taskDAOimpl implements TaskDAO {
 
     public taskDAOimpl()
     {
+        /* 
         System.out.print("Enter no of tasks to add: ");
         nooftask=scobj.nextInt();
         System.out.print("\n");
@@ -30,6 +31,7 @@ public class taskDAOimpl implements TaskDAO {
         
         //set tasks qty of client 
         c.setTaskqty(nooftask);
+        */
     }
 
     //add new task by client
