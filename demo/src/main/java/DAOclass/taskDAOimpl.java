@@ -39,10 +39,12 @@ public class taskDAOimpl implements TaskDAO {
 
     //add new task by client
     @Override
-    public void addtask(int task_id) {
+    public void addtask() {
         //throw new UnsupportedOperationException("Unimplemented method 'addtask'");
             System.out.print("\033[H\033[2J");  
-		    System.out.flush();
+		    System.out.flush();    
+            
+            int task_id;   
             
             //prompt to add new task number
             System.out.print("Enter task number: ");
@@ -88,19 +90,63 @@ public class taskDAOimpl implements TaskDAO {
 
     //delete task by client on arraylist
     @Override
-    public void deletetask(int taskid, int delete_taskid) {
+    public void deletetask() {
         //throw new UnsupportedOperationException("Unimplemented method 'deletetask'");
-        System.out.println("Enter taskid to remove: ");
-            taskid = scobj.nextInt();
-        
-        if (ctasks.contains(taskid)){
-            ctasks.remove(taskid);      
-            System.out.println("task removed");
-            
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+        boolean task_delete = true; 
+        taskDAOimpl dispTask = new taskDAOimpl();
+
+        while(task_delete){
+        //display tasks
+            if(!ctasks.isEmpty()){
+                //display tasks           
+                System.out.println("list of tasks:"); 
+                for(int i = 0; i < ctasks.size() ; i++){
+                    System.out.println("taskid:" +ctasks.get(i));
+                }
+
+                System.out.println("");
+                System.out.println("");
+                        
+                int taskid; 
+                System.out.print("Enter taskid to remove: ");
+                taskid = scobj.nextInt();
+                //delete a task by value 
+                ctasks.remove(Integer.valueOf(taskid));
+
+                //clear screen
+                System.out.print("\033[H\033[2J");  
+		        System.out.flush();    
+                //display tasks
+                System.out.println("list of tasks:"); 
+                for(int i = 0; i < ctasks.size() ; i++){
+                    System.out.println("taskid:" +ctasks.get(i));
+                }
+                
+                System.out.println("");
+                System.out.println("");
+                System.out.print("delete more task (Y/N): ");
+                letter = scobj.next().charAt(0);
+
+                //clear screen
+                System.out.print("\033[H\033[2J");  
+		        System.out.flush();  
+                if(letter == 'n' || letter == 'N'){
+                    task_delete = false; 
+                }
+                
+                
+            }
+            else{
+                System.out.print("list is empty!! ");
+                System.out.print("press (x) to Exit: ");
+                letter = scobj.next().charAt(0);
+                    if(letter == 'x' || letter == 'X'){
+                        task_delete = false;
+                    }
+            }
         }
-        else{
-            System.out.println("task doesn't exist");
-        } 
     }
 
     //search task by client on arraylist
@@ -133,22 +179,28 @@ public class taskDAOimpl implements TaskDAO {
         System.out.print("\033[H\033[2J");  
 		System.out.flush();
         
+        if(!ctasks.isEmpty()){
+            System.out.print("list is empty!! ");
+                
+        }
+        else{
+            System.out.println("list of tasks:"); 
+            for(int i = 0; i < ctasks.size() ; i++)
+            {
+                System.out.println("taskid:" +ctasks.get(i));
+                //System.out.print(" ");
+                //System.out.print(ctasks.get(i));
         
-        System.out.println("list of tasks:"); 
-        for(int i = 0; i < ctasks.size() ; i++)
-        {
-            System.out.println("taskid:" +ctasks.get(i));
-            //System.out.print(" ");
-            //System.out.print(ctasks.get(i));
-          
-        } 
+            } 
+            
+        }
         System.out.println("");
         System.out.println("");
-        System.out.print("press (Y) go back to menu: ");
+        System.out.print("press (M) go back to menu: ");
         letter = scobj.next().charAt(0);
 
         System.out.println("");
-        if(letter == 'y' || letter == 'Y'){
+        if(letter == 'm' || letter == 'M'){
             return; 
         }
         
