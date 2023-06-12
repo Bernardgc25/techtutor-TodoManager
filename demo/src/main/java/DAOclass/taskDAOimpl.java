@@ -71,34 +71,71 @@ public class taskDAOimpl implements TaskDAO {
     @Override
     public void updatetask(int task_id, int update_task_id) {
         //throw new UnsupportedOperationException("Unimplemented method 'updatetask'");   
- 
-        System.out.print("Select which task number to update: ");
-        task_id = scobj.nextInt();
+        int upd_taskid;
+        boolean taskupd_notdone = true;
+        //clear screen
+       
 
-        System.out.print("Enter a new task number: ");
-        task_id = scobj.nextInt();
-        
-        //replace old task with new task
-        ctasks.set(task_id, update_task_id);
+        while(taskupd_notdone){
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();   
+            //display tasks
+            System.out.println("list of tasks:"); 
+            for(int i = 0; i < ctasks.size() ; i++){
+                System.out.println("taskid:" +ctasks.get(i));
+            }
 
-        //System.out.println(name + " travelled " + miles + " miles.");
-        System.out.print(" taskid "+task_id ); 
-        System.out.print(" is now change to taskid "+ update_task_id );
-        System.out.print("\n");
-    
+            System.out.println("");
+            System.out.print("Select a task number to update: ");
+            task_id = scobj.nextInt();
+            
+            System.out.print("Enter a new task number: ");
+            upd_taskid = scobj.nextInt();
+
+            //update an existing task
+            for(int i = 0; i < ctasks.size() ; i++){
+                if(ctasks.get(i) == task_id){
+                    ctasks.set(i, upd_taskid);
+                }
+            }
+            //clear screen
+            System.out.print("\033[H\033[2J");  
+            System.out.flush();    
+            
+            //display tasks an updated list   
+            System.out.println("Updated list of tasks:"); 
+            for(int i = 0; i < ctasks.size() ; i++){
+                System.out.println("taskid:" +ctasks.get(i));
+            }
+            
+            System.out.println("");
+            System.out.println("(U) update another task");
+            System.out.println("(M) go back to menu");
+            System.out.println("");
+            System.out.print("Enter a choice: ");
+            letter = scobj.next().charAt(0);
+                if(letter == 'u' || letter == 'U'){
+                    taskupd_notdone = true;
+                }
+                else if(letter == 'm' || letter == 'M'){
+                    taskupd_notdone = false;
+                }
+        }
     }
 
     //delete task by client on arraylist
     @Override
-    public void deletetask() {
+    public void removetask() {
         //throw new UnsupportedOperationException("Unimplemented method 'deletetask'");
-        System.out.print("\033[H\033[2J");  
-		System.out.flush();
+        //System.out.print("\033[H\033[2J");  
+		//System.out.flush();
         boolean task_delete = true; 
         taskDAOimpl dispTask = new taskDAOimpl();
 
         while(task_delete){
-        //display tasks
+            System.out.print("\033[H\033[2J");  
+		    System.out.flush();
+            //display tasks
             if(!ctasks.isEmpty()){
                 //display tasks           
                 System.out.println("list of tasks:"); 
@@ -117,7 +154,7 @@ public class taskDAOimpl implements TaskDAO {
 
                 //clear screen
                 System.out.print("\033[H\033[2J");  
-		        System.out.flush();    
+	            System.out.flush();    
                 //display tasks
                 System.out.println("list of tasks:"); 
                 for(int i = 0; i < ctasks.size() ; i++){
@@ -125,22 +162,30 @@ public class taskDAOimpl implements TaskDAO {
                 }
                 
                 System.out.println("");
+                System.out.println("delete more task?");
+                System.out.println("(Y) Yes");
+                System.out.println("(N) No");
                 System.out.println("");
-                System.out.print("delete more task (Y/N): ");
+                System.out.print("Enter a choice: ");
+                
                 letter = scobj.next().charAt(0);
 
                 //clear screen
                 System.out.print("\033[H\033[2J");  
-		        System.out.flush();  
+                System.out.flush();  
                 if(letter == 'n' || letter == 'N'){
                     task_delete = false; 
                 }
-                
+                else if(letter == 'y' || letter == 'y'){
+                    task_delete = true; 
+                }
                 
             }
             else{
-                System.out.print("list is empty!! ");
-                System.out.print("press (M) go back to menu: ");
+                System.out.println("list is empty!! ");
+                System.out.println("(M) go back to menu: ");
+                System.out.println("");
+                System.out.print("Enter a choice: ");
                 letter = scobj.next().charAt(0);
                     if(letter == 'm' || letter == 'M'){
                         task_delete = false;
@@ -153,36 +198,53 @@ public class taskDAOimpl implements TaskDAO {
     @Override
     public void searchtask(int taskid) {
         //throw new UnsupportedOperationException("Unimplemented method 'searchtask'");
-        System.out.print("\033[H\033[2J");  
-		System.out.flush();
-
-        System.out.print("Enter taskid to search: ");
-        taskid = scobj.nextInt();
-        System.out.println("");
+        boolean searchnotDone = true;
         
-        if (ctasks.contains(taskid)){
-            System.out.println("taskid exist...");
-            System.out.println("");
-            //display tasks
-            System.out.println("list of tasks:"); 
-            for(int i = 0; i < ctasks.size() ; i++){
-                System.out.println("taskid:" +ctasks.get(i));
+        while(searchnotDone){
+            System.out.print("\033[H\033[2J");  
+            System.out.flush();
+
+            System.out.print("Enter taskid to search: ");
+            taskid = scobj.nextInt();
+            
+            if (ctasks.contains(taskid)){
+                System.out.println("taskid exist...");
+                System.out.println("");
+
+                //display tasks
+                System.out.println("list of tasks:"); 
+                for(int i = 0; i < ctasks.size() ; i++){
+                    System.out.println("taskid:" +ctasks.get(i));
+                }
+                
+                System.out.println("");
+                System.out.println("(S) seach for taskid");
+                System.out.println("(M) go back to menu: ");
+                System.out.println("");
+                System.out.print("Enter a choice: ");
+                letter = scobj.next().charAt(0);
+                if(letter == 'm' || letter == 'M'){
+                    searchnotDone = false; 
+                }
+                else if (letter == 's' || letter == 'S'){
+                    searchnotDone = true;
+                }
+            } 
+            else {
+                System.out.println("taskid do not exist!!!");
+                System.out.println("");
+                System.out.println("(S) seach for taskid");
+                System.out.println("(M) go back to menu: ");
+                System.out.println("");
+                System.out.print("Enter a choice: ");
+                letter = scobj.next().charAt(0);
+                if(letter == 'm' || letter == 'M'){
+                    searchnotDone = false; 
+                }
+                else if (letter == 's' || letter == 'S'){
+                    searchnotDone = true;
+                }
             }
-            System.out.println("");
-            System.out.print("press (M) go back to menu: ");
-            letter = scobj.next().charAt(0);
-            if(letter == 'm' || letter == 'M'){
-                return; 
-            };
-        } 
-        else {
-            System.out.println("taskid do not exist!!!");
-            System.out.println("");
-            System.out.print("press (M) go back to menu: ");
-            letter = scobj.next().charAt(0);
-            if(letter == 'm' || letter == 'M'){
-                return; 
-            };
         }
     }
 
@@ -208,19 +270,15 @@ public class taskDAOimpl implements TaskDAO {
                 
         }
         else{
-            System.out.println("");
+            System.out.println("list of tasks:"); 
             for(int i = 0; i < ctasks.size() ; i++)
             {
                 System.out.println("taskid:" +ctasks.get(i));
-                //System.out.print(" ");
-                //System.out.print(ctasks.get(i));
-        
             } 
-            
         }
+
         System.out.println("");
-        System.out.println("");
-        System.out.print("press (M) go back to menu: ");
+        System.out.print("(M) go back to menu: ");
         letter = scobj.next().charAt(0);
 
         System.out.println("");
@@ -228,8 +286,5 @@ public class taskDAOimpl implements TaskDAO {
             return; 
         }
         
- 
-        
     }
-    
 }

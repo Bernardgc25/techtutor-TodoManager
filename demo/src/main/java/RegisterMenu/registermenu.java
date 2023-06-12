@@ -46,7 +46,7 @@ public class registermenu {
         UserDAOimpl l = new UserDAOimpl(); 
         
         //System.out.println("");
-        System.out.println("Log-in as");
+        System.out.println("Log-in as:");
         System.out.println("(C) Client");
         System.out.println("(V) Visitor");
 

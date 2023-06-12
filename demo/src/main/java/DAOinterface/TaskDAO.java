@@ -6,13 +6,13 @@ public interface TaskDAO {
     //CRUD functions
 
     //add new task by client
-    public void addtask(int task_id);
+    public void addtask();
 
     //update new task by client 
     public void updatetask(int task_id, int update_task_id);
 
     //delete task by client on arraylist
-    public void deletetask(int taskid, int delete_taskid);
+    public void removetask();
     
     //search task by client on arraylist
     public void searchtask(int taskid);

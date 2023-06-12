@@ -45,18 +45,18 @@ public class taskMenu {
         
         //add a task    
         case 'B':
-            task.addtask(t_id);
+            task.addtask();
             break;
         case 'b':
-            task.addtask(t_id);
+            task.addtask();
             break;
         
         //delete a task
         case 'C':
-            task.deletetask(t_id, del_tid);
+            task.removetask();
             break;
         case 'c':
-            task.deletetask(t_id, del_tid);
+            task.removetask();;
             break;
         
         //update a task    
@@ -99,7 +99,7 @@ public class taskMenu {
         System.out.print("\033[H\033[2J");  
 		System.out.flush();
 
-        System.out.println("You are logged in as client..");
+        System.out.println("You are logged in as visitor..");
         
         System.out.println("(A) Display assigned tasks");
         System.out.println("(X) Exit");

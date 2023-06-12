@@ -19,8 +19,9 @@ public class DemoApplication {
 		//System.out.println("hello");
 
 		Scanner scn = new Scanner(System.in);		
-		boolean flag = false;
-		
+		boolean prog_running = false;
+		int choose;
+
 		do {
 
 			//register menu
@@ -28,24 +29,23 @@ public class DemoApplication {
 			System.out.flush();  
 			rm.reg_menu(choice);
 			
-
-			System.out.println("");
 			System.out.println("Return to main menu? ");
-			System.out.print("Enter 1 to continue or Enter 0 to quit: ");
-			//System.out.println();
+			System.out.println("(1) Continue");
+			System.out.println("(0) Quit Program");
 			
-
-
-			int choose = scn.nextInt();
+			//System.out.println();
+			System.out.println("");
+            System.out.print("Enter a choice: ");
+			choose = scn.nextInt();
 			if( choose == 1 ) {
-				flag = true;
+				prog_running = true;
 			} 
 			else if(choose == 0) {
-				System.out.println("ThankU.. Bye");
-				flag = false;
+				System.out.println("Thank you...");
+				prog_running = false;
 			}
 		} 
-		while(flag);
+		while(prog_running);
 		
 
 
