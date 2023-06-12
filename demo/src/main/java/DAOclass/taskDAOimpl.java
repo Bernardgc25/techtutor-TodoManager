@@ -140,9 +140,9 @@ public class taskDAOimpl implements TaskDAO {
             }
             else{
                 System.out.print("list is empty!! ");
-                System.out.print("press (x) to Exit: ");
+                System.out.print("press (M) go back to menu: ");
                 letter = scobj.next().charAt(0);
-                    if(letter == 'x' || letter == 'X'){
+                    if(letter == 'm' || letter == 'M'){
                         task_delete = false;
                     }
             }
@@ -153,12 +153,36 @@ public class taskDAOimpl implements TaskDAO {
     @Override
     public void searchtask(int taskid) {
         //throw new UnsupportedOperationException("Unimplemented method 'searchtask'");
+        System.out.print("\033[H\033[2J");  
+		System.out.flush();
+
+        System.out.print("Enter taskid to search: ");
+        taskid = scobj.nextInt();
+        System.out.println("");
         
         if (ctasks.contains(taskid)){
-            System.out.println("taskid exist");
+            System.out.println("taskid exist...");
+            System.out.println("");
+            //display tasks
+            System.out.println("list of tasks:"); 
+            for(int i = 0; i < ctasks.size() ; i++){
+                System.out.println("taskid:" +ctasks.get(i));
+            }
+            System.out.println("");
+            System.out.print("press (M) go back to menu: ");
+            letter = scobj.next().charAt(0);
+            if(letter == 'm' || letter == 'M'){
+                return; 
+            };
         } 
         else {
-            System.out.println("taskid do not exist");
+            System.out.println("taskid do not exist!!!");
+            System.out.println("");
+            System.out.print("press (M) go back to menu: ");
+            letter = scobj.next().charAt(0);
+            if(letter == 'm' || letter == 'M'){
+                return; 
+            };
         }
     }
 
@@ -179,12 +203,12 @@ public class taskDAOimpl implements TaskDAO {
         System.out.print("\033[H\033[2J");  
 		System.out.flush();
         
-        if(!ctasks.isEmpty()){
+        if(ctasks.isEmpty()){
             System.out.print("list is empty!! ");
                 
         }
         else{
-            System.out.println("list of tasks:"); 
+            System.out.println("");
             for(int i = 0; i < ctasks.size() ; i++)
             {
                 System.out.println("taskid:" +ctasks.get(i));
